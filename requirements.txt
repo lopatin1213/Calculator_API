@@ -1,0 +1,6 @@
+fastapi
+pydantic
+requests
+sympy
+numpy
+matplotlib
