@@ -38,7 +38,7 @@ class StatRequest(BaseModel):
         "stat_type": "mean"
     }
 
-
+Доступные виды stat_type: "mean", "median", "max", "min", "range", "variance"(Среднее значение, медиана, максимум, мимнимум, размах, дисперсия)
 
 class FracRequest(BaseModel):
     first: str
@@ -55,7 +55,7 @@ class FracRequest(BaseModel):
         "second": "1/3",
         "oper": "+"
     }
-
+Доступные oper: + - * /
 
 class TrigRequest(BaseModel):
     number: str
@@ -68,7 +68,7 @@ class TrigRequest(BaseModel):
         "number": "30",
         "type": "sin"
     }
-
+Доступны type: "sin", "cos", "tan", "ctg", "arcsin", "arccos", "arctan".
 class SchisOPRequest(BaseModel):
     first: str
     second: str
@@ -85,7 +85,7 @@ class SchisOPRequest(BaseModel):
         "ss": "10"
     }
     """
-
+2<ss<36
 class SchisPerRequest(BaseModel):
     num: str
     ss1: str
