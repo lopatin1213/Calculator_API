@@ -24,16 +24,17 @@ def nth_root(number, n):
     return number ** (1 / n)
 
 
+
 def calculate_1(expression):
     try:
         logging.debug("Выполнение")
-        
+
         expression = replace_z_t(expression)
         expression = replace_caret_with_power(expression)
-        
+
         logging.info(expression)
         if expression == "":
-            return
+            return "none"
         if '0' in expression and '/' in expression:
             parts = expression.split('/')
             if parts[1].strip() == '0':
@@ -44,14 +45,17 @@ def calculate_1(expression):
             final_result = addings.dynamic_precision(result)
             mantissa, exponent = final_result.split("E")
             final_result = "{}*10^{}".format(float(mantissa), int(exponent))
-            return final_result
+
+
+            return f"{final_result}"
+
 
         elif '√' in expression:
             parts = expression.split('√')
             if len(parts) != 2:
                 raise ValueError("Неверный формат корня")
-            n = float(parts[0])
             x = float(parts[1])
+            n = float(parts[0])
             result = nth_root(x, n)
         else:
             result = sympify(expression).evalf()
@@ -59,24 +63,26 @@ def calculate_1(expression):
             logging.info(result)
             logging.info(result)
             logging.info(type(result))
-        
+
         # Применение динамической точности
         final_result = addings.format_number(addings.dynamic_precision(result))
         logging.info(final_result)
-        
-        return str(final_result)
+        return f"{final_result}"
 
-        
-        
-    
+
+
+
     except ZeroDivisionError:
-        return "ZeroDevisionError"
+        logging.error("Ошибка")
+        return "деление на ноль"
     except ValueError as ve:
-        return "ValueError"
+        return str(ve)
     except SyntaxError:
-        return "SyntaxError"
+        return "Синтаксическа ошибка"
     except Exception as e:
-        return "Error"
+        logging.error(e)
+        return str(e)
+
 
 
 
@@ -115,8 +121,6 @@ def factorial_scientific(n):
     return scientific_representation
 
 
-
-
 def arithmetic_operation_fractions(first_fraction, second_fraction, operation):
     """Производит арифметические операции с дробями."""
     try:
@@ -134,11 +138,11 @@ def arithmetic_operation_fractions(first_fraction, second_fraction, operation):
             result = frac1 / frac2
         else:
             raise ValueError("Операция не поддерживается.")
-        return result
-        
-        
+        return f"Результат: {result}"
+
+
     except ZeroDivisionError:
-        return "ZeroDivisionError"
+        return "деление на ноль"
     except ValueError as ve:
         return str(ve)
     except Exception as e:

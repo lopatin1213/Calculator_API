@@ -1,14 +1,14 @@
 from string import printable, ascii_uppercase
-import addings
+
 import logging
 def to_10(n, ss):
     print(n, ss)
     ss = int(ss)
-    logging.info(f"{type(n)}, {type(ss)}")#
+ #   logging.error(f"{type(n)}, {type(ss)}")#
     try:
         return int(str(n), ss)
-    except Exception as e:
-        logging.error(str(e))
+    except Exception:
+#        logging.error(type(e), str(e))
         raise ValueError(f"Для {ss} системы счисления можно использовать только символы {printable[:ss]}")
 
 
@@ -27,46 +27,50 @@ def to_2_36(n,ss):
         n //= ss
     return res
 
-def calculate_sch(first_num, second_num, type, ss):
+
+def calculate_sch(first, second, type, ss):
     try:
-        a = to_10(first_num, ss)
+        a = to_10(first, ss)
         logging.info(a)
-        b = to_10(second_num, ss)
+        b = to_10(second, ss)
         logging.info(b)
         if type == "+":
-            result = a+b
+            result = a + b
         elif type == "-":
-            result = a-b
+            result = a - b
         elif type == "*":
-            result = a*b
+            result = a * b
         elif type == "/":
-            result = a//b
+            result = a // b
             result = int(result)
         else:
             raise ValueError("Такого нет")
-        logging.info(result)
+        #        logging.info(result)
         result = to_2_36(result, ss)
         logging.info(result)
-        return result
+        return f"{result}"
 
+    #       logging.info(window.label_sch_result.text())
+    # update_history()
 
     except ValueError as ve:
         return str(ve)
     except Exception as e:
         return str(e)
 
-def perevod_to(first_num, ss1, ss2):
+
+def perevod_to(num, ss1, ss2):
     try:
-        a = to_10(first_num, ss1)
-        
+        a = to_10(num, ss1)
+
         result = to_2_36(a, ss2)
-        logging.info(result)
-        return result
+        #       logging.info(result)
+        return f"{result}"
+
+    #      logging.info(window.label_sch_result.text())
+    # update_history()
 
     except ValueError as ve:
-
         return str(ve)
-
     except Exception as e:
-
         return str(e)

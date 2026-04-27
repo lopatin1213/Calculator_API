@@ -1,6 +1,5 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-import ast
 from calculate import calculate_1, arithmetic_operation_fractions
 from equations import solve_system_of_equations
 from statistic import calculate_statistics
@@ -33,7 +32,7 @@ async def solve_equations(req: EquationsRequests):
     Решает систему уравнений.
     Пример запроса: POST /solve_equations/
     {
-        "equations": ["x+y=1", "x-y=3"]
+        "equations": x+y=1 x-y=3
     }
     """
     logger.info(f"Solve equations requested with equations: {req.equations}")
