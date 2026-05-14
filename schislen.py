@@ -38,6 +38,8 @@ def calculate_sch(first, second, type, ss):
             result = a + b
         elif type == "-":
             result = a - b
+            if result < 0:
+                return f"{result}  10 сс (меньше нуля не переводиться)"
         elif type == "*":
             result = a * b
         elif type == "/":
