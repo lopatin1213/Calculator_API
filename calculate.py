@@ -23,7 +23,7 @@ def nth_root(number, n):
         raise ValueError("Корень четной степени из отрицательного числа невозможен.")
     return number ** (1 / n)
 
-
+from equations import insert_multiplication_signs
 
 def calculate_1(expression):
     try:
@@ -31,7 +31,7 @@ def calculate_1(expression):
 
         expression = replace_z_t(expression)
         expression = replace_caret_with_power(expression)
-
+        expression = insert_multiplication_signs(expression)
         logging.info(expression)
         if expression == "":
             return "none"
