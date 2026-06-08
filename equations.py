@@ -42,7 +42,7 @@ def get_all_sympy_function_names():
                 names.add(name)
 
     # Твои любимые ручные дополнения
-    names.update(['sqrt', 'log', 'ln', 'Abs', 'sign', 'floor', 'ceiling'])
+    names.update(['sqrt', 'log', 'ln', 'Abs', 'sign', 'floor', 'ceiling', 'deg', 'rad'])
     return names
 
 def insert_multiplication_signs(expr: str, extra_functions=None) -> str:
