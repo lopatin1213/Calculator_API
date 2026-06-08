@@ -8,7 +8,11 @@ import sympy
 def get_all_sympy_function_names():
     """Собирает имена всех встроенных функций и констант SymPy."""
     names = set()
-
+    for name, obj in vars(sympy).items():
+        if name.startswith('_'):
+            continue
+        if isinstance(obj, FunctionClass):
+            names.add(name)
     # Сбор функций (как и раньше)
     def collect(module):
         for attr_name in dir(module):
