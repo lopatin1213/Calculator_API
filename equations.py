@@ -2,9 +2,6 @@ import addings
 from sympy import *
 import logging
 
-
-
-import re
 import re
 import sympy
 
