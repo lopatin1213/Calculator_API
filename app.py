@@ -136,3 +136,17 @@ async def schis_per(req: SchisPerRequest):
     logger.info(f"Schislen perevod requested with num: {req.num}, ss1: {req.ss1}, ss2: {req.ss2}")
     result = perevod_to(req.num, req.ss1, req.ss2)
     return JSONResponse(content={"result": result})
+
+class TimeCalc(BaseModel):
+    expr: str
+from time_math import compute_time_str
+@app.post('/time/')
+async def time_calc(req: TimeCalc):
+    """
+    Осуществляет работу с временем
+    Пример запроса: POST /time
+    {expr: "2h:30m*2"}
+    """
+    logger.info(f"Time calc requested with expr {req.expr}")
+    result = compute_time_str(req.expr)
+    return JSONResponse(content={"result": result})
