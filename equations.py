@@ -9,7 +9,7 @@ def get_all_sympy_function_names():
     """Собирает имена всех встроенных функций и констант SymPy."""
     names = set()
     n = dir(sympy)
-.   names.update(n)
+    names.update(n)
     return names
 
 def insert_multiplication_signs(expr: str, extra_functions=None) -> str:
