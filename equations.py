@@ -8,41 +8,8 @@ import sympy
 def get_all_sympy_function_names():
     """Собирает имена всех встроенных функций и констант SymPy."""
     names = set()
-    for name, obj in vars(sympy).items():
-        if name.startswith('_'):
-            continue
-        if isinstance(obj, FunctionClass):
-            names.add(name)
-    # Сбор функций (как и раньше)
-    def collect(module):
-        for attr_name in dir(module):
-            if attr_name.startswith('_'):
-                continue
-            try:
-                attr = getattr(module, attr_name)
-            except Exception:
-                continue
-            if callable(attr) or isinstance(attr, type):
-                names.add(attr_name)
-            elif hasattr(attr, '__module__') and 'sympy.functions' in getattr(attr, '__module__', ''):
-                collect(attr)
-    collect(sympy.functions)
-
-    # Сбор констант (новое!)
-    for name in dir(sympy):
-        if name.startswith('_'):
-            continue
-        try:
-            obj = getattr(sympy, name)
-        except Exception:
-            continue
-        # Проверяем, что это константа, а не функция или класс
-        if hasattr(obj, 'is_constant') and obj.is_constant:
-            if not callable(obj) and not isinstance(obj, type):
-                names.add(name)
-
-    # Твои любимые ручные дополнения
-    names.update(['sqrt', 'log', 'ln', 'Abs', 'sign', 'floor', 'ceiling', 'deg', 'rad'])
+    n = dir(sympy)
+.   names.update(n)
     return names
 
 def insert_multiplication_signs(expr: str, extra_functions=None) -> str:
