@@ -164,7 +164,7 @@ def _convert_to_unit(value_ms: float, unit: str) -> str:
         return f"Ошибка: неизвестная единица '{unit}'"
     result = value_ms / UNIT_TO_MS[unit]
     result = addings.dynamic_precision(result)
-    return f"{int(result)}{unit}" if result.is_integer() else f"{result:.2f}{unit}"
+    return f"{int(result)}{unit}"
 
 def _format_expanded(value_ms: float) -> str:
     if value_ms < 0:
