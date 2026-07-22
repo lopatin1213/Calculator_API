@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from calculate import calculate_1, arithmetic_operation_fractions
 from equations import solve_system_of_equations
@@ -13,6 +14,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # или ["https://vartrusdata.alwaysdata.net"]
+    allow_methods=["*"],
+    allow_headers=["*"],
+) app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # или ["https://vartrusdata.alwaysdata.net"]
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class CalcRequests(BaseModel):
     expr: str
 @app.post("/calculate/")
