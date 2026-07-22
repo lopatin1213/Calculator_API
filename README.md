@@ -8,7 +8,7 @@ class CalcRequests(BaseModel):
 Решает обычные примеры + функции из библиотеки sympy(['pi','sqrt', 'exp', 'ln', 'log', 'sin', 'cos', 'tan', 'asin', 'acos', 'atan',
             'rad', 'deg', 'sinh', 'cosh', 'tanh',
                       'Si', 'Ci', 'Ei', ].
-Пример запроса: POST /solve_equations/
+Пример запроса: POST /calculate/
     {
         "expr": "2+2"
     }
@@ -19,7 +19,7 @@ class EquationsRequests(BaseModel):
 Решает систему уравнений.
 Пример запроса: POST /solve_equations/
     {
-        "equations": ["x+y=1", "x-y=3"]
+        "equations": "x+y=1 x-y=3"
     }
     
 
@@ -102,3 +102,4 @@ class SchisPerRequest(BaseModel):
         "ss1": "2",
         "ss2": "10"
     }
+
