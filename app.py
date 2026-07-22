@@ -19,11 +19,6 @@ app.add_middleware(
     allow_origins=["*"], # или ["https://vartrusdata.alwaysdata.net"]
     allow_methods=["*"],
     allow_headers=["*"],
-) app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"], # или ["https://vartrusdata.alwaysdata.net"]
-    allow_methods=["*"],
-    allow_headers=["*"],
 )
 class CalcRequests(BaseModel):
     expr: str
