@@ -42,7 +42,7 @@ async def solve_equations(req: EquationsRequests):
     Решает систему уравнений.
     Пример запроса: POST /solve_equations/
     {
-        "equations": x+y=1 x-y=3
+        "equations": "x+y=1 x-y=3"
     }
     """
     logger.info(f"Solve equations requested with equations: {req.equations}")
