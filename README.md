@@ -103,3 +103,14 @@ class SchisPerRequest(BaseModel):
         "ss2": "10"
     }
 
+class TimeCalc(BaseModel):
+    expr: str
+from time_math import compute_time_str
+@app.post('/time/')
+async def time_calc(req: TimeCalc):
+    """
+    Осуществляет работу с временем
+    Пример запроса: POST /time
+    {expr: "2h30m*2"}
+    """
+
