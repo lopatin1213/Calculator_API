@@ -25,8 +25,11 @@ class CalcRequests(BaseModel):
 @app.post("/calculate/")
 async def calculate(req: CalcRequests):
     """
-    Вычисляет простое арифметическое выражение, переданное в GET-запросе.
-    Пример запроса: GET /calculate/?expr=2+2
+    Вычисляет простое арифметическое выражение, переданное в POST - запросе.
+Пример запроса:
+{
+    "expr": "2+2"
+}
     """
     logger.info(f"Calculate requested with expr: {req.expr}")
     result = calculate_1(req.expr)
